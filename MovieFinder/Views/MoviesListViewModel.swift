@@ -7,12 +7,26 @@
 
 import Foundation
 
-final class ViewModel: ObservableObject {
+final class MoviesListViewModel: ObservableObject {
     @Published var searchText = ""
+    @Published var debouncedSearchText = ""
     @Published var movies = [Movie]()
+    @Published var isLoading = true
+    @Published var errorMessage = ""
     
+    init() {
+        setupSearchTextDebounce()
+    }
+
+    func setupSearchTextDebounce() {
+        $searchText.debounce(for: .seconds(1), scheduler: RunLoop.main)
+            .assign(to: &$debouncedSearchText)
+    }
+
     func loadMovies(s: String) async {
-        print(s)
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         guard let url = URL(string: "http://www.omdbapi.com/?s=\(s)&apikey=\(apiKey)") else {
             print("API failed")
             return
@@ -23,7 +37,10 @@ final class ViewModel: ObservableObject {
             do {
                 let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
                 print(decodedResponse)
-                movies = decodedResponse.Search
+                DispatchQueue.main.async {
+                    self.movies = decodedResponse.Search
+                    self.isLoading = false
+                }
             } catch {
                 print(error)
             }
