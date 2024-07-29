@@ -11,13 +11,12 @@ let env = ProcessInfo.processInfo.environment
 let apiKey = env["API_KEY"] ?? ""
 
 struct ContentView: View {
-    @State private var searchText = ""
     @StateObject private var viewModel = ViewModel()
     
     
     var body: some View {
         NavigationStack {
-            Text("").searchable(text: $searchText).onChange(of: searchText) { newSearchText in
+            Text("").searchable(text: $viewModel.searchText).onChange(of: viewModel.searchText) { newSearchText in
                 Task {
                     await viewModel.loadMovies(s: newSearchText)
                 }

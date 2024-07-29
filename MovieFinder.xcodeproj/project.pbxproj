@@ -59,9 +59,7 @@
 				92B042682C57B3870066B69A /* Views */,
 				92B042652C57AF710066B69A /* Models */,
 				92B042642C579EA40066B69A /* Info.plist */,
-				92B042692C57B3FD0066B69A /* ViewModel.swift */,
 				92B042562C578E660066B69A /* MovieFinderApp.swift */,
-				92B042582C578E660066B69A /* ContentView.swift */,
 				92B0425A2C578E670066B69A /* Assets.xcassets */,
 				92B0425C2C578E670066B69A /* Preview Content */,
 			);
@@ -87,6 +85,8 @@
 		92B042682C57B3870066B69A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				92B042692C57B3FD0066B69A /* ViewModel.swift */,
+				92B042582C578E660066B69A /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -8,6 +8,7 @@
 import Foundation
 
 final class ViewModel: ObservableObject {
+    @Published var searchText = ""
     @Published var movies = [Movie]()
     
     func loadMovies(s: String) async {
