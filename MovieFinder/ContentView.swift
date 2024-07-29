@@ -7,15 +7,35 @@
 
 import SwiftUI
 
+let env = ProcessInfo.processInfo.environment
+let apiKey = env["API_KEY"] ?? ""
+
 struct ContentView: View {
+    @State private var searchText = ""
+    @StateObject private var viewModel = ViewModel()
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            Text("").searchable(text: $searchText).onChange(of: searchText) { newSearchText in
+                Task {
+                    await viewModel.loadMovies(s: newSearchText)
+                }
+            }
+            if !viewModel.movies.isEmpty {
+                List(viewModel.movies, id: \.imdbID) { movie in
+                    HStack {
+                        AsyncImage(url: URL(string: movie.Poster)
+                        ) {
+                            result in result.image?.resizable().scaledToFit()
+                        }.frame(width: 100, height: 150)
+                        Text(movie.Title)
+                    }
+                }
+            } else {
+                ProgressView()
+            }
         }
-        .padding()
     }
 }
 
