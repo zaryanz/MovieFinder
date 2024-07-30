@@ -18,4 +18,6 @@ struct Movie: Codable {
     var `Type`: String
     var Poster: String
     var Plot: String?
+    var Director: String?
+    var Genre: String?
 }

@@ -24,15 +24,7 @@ struct MoviesListView: View {
                         .foregroundColor(.gray)
                 } else {
                     List(viewModel.movies, id: \.imdbID) { movie in
-                        NavigationLink(destination: MovieDetailView(imdbID: movie.imdbID)) {
-                            HStack {
-                                AsyncImage(url: URL(string: movie.Poster)
-                                ) {
-                                    result in result.image?.resizable().scaledToFit()
-                                }.frame(width: 100, height: 150)
-                                Text(movie.Title)
-                            }
-                        }
+                        MovieListItemView(movie: movie)
                     }.frame( maxWidth: .infinity)
                         .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
                 }

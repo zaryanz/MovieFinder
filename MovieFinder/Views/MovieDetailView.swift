@@ -25,6 +25,8 @@ struct MovieDetailView: View {
                     Text(viewModel.movie!.Title).font(.title)
                     Text(viewModel.movie!.Year)
                     Text(viewModel.movie!.Plot ?? "No Plot available for this movie")
+                    Text("Director: \(viewModel.movie!.Director)")
+                    Text("Genre: \(viewModel.movie!.Genre)")
                 }
                 Spacer()
             }
