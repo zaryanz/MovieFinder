@@ -8,10 +8,30 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    @StateObject private var viewModel = MovieDetailViewModel()
+    
     let imdbID: String
     
     var body: some View {
-        Text(imdbID)
+        NavigationStack {
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                VStack {
+                    AsyncImage(url: URL(string: viewModel.movie!.Poster)
+                    ) {
+                        result in result.image?.resizable().scaledToFit()
+                    }.frame(width: 200, height: 300)
+                    Text(viewModel.movie!.Title).font(.title)
+                    Text(viewModel.movie!.Year)
+                    Text(viewModel.movie!.Plot ?? "No Plot available for this movie")
+                }
+                Spacer()
+            }
+        }.navigationTitle(viewModel.isLoading ? "" :viewModel.movie!.Title +  " (" + viewModel.movie!.Year + ")" )
+            .navigationBarTitleDisplayMode(.inline).task {
+            await viewModel.loadMovie(imdbID: imdbID)
+        }
     }
 }
 

@@ -16,6 +16,7 @@
 		92B0426D2C57DC5B0066B69A /* apiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B0426C2C57DC5B0066B69A /* apiConfig.swift */; };
 		92B042712C57DF180066B69A /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B042702C57DF180066B69A /* MoviesListView.swift */; };
 		92F2A6162C58D23D005014C6 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F2A6152C58D23D005014C6 /* MovieDetailView.swift */; };
+		92F2A6182C58D4DF005014C6 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F2A6172C58D4DF005014C6 /* MovieDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		92B0426C2C57DC5B0066B69A /* apiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiConfig.swift; sourceTree = "<group>"; };
 		92B042702C57DF180066B69A /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
 		92F2A6152C58D23D005014C6 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		92F2A6172C58D4DF005014C6 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				92B042582C578E660066B69A /* ContentView.swift */,
 				92B042702C57DF180066B69A /* MoviesListView.swift */,
 				92F2A6152C58D23D005014C6 /* MovieDetailView.swift */,
+				92F2A6172C58D4DF005014C6 /* MovieDetailViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				92B042672C57AF900066B69A /* MovieModels.swift in Sources */,
 				92B0426A2C57B3FD0066B69A /* MoviesListViewModel.swift in Sources */,
 				92B042712C57DF180066B69A /* MoviesListView.swift in Sources */,
+				92F2A6182C58D4DF005014C6 /* MovieDetailViewModel.swift in Sources */,
 				92B042572C578E660066B69A /* MovieFinderApp.swift in Sources */,
 				92B0426D2C57DC5B0066B69A /* apiConfig.swift in Sources */,
 				92F2A6162C58D23D005014C6 /* MovieDetailView.swift in Sources */,

@@ -17,4 +17,5 @@ struct Movie: Codable {
     var imdbID: String
     var `Type`: String
     var Poster: String
+    var Plot: String?
 }
