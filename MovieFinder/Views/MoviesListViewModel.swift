@@ -29,6 +29,7 @@ final class MoviesListViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.movies = []
                 self.isLoading = false
+                self.errorMessage = "Start typing at least 3 letters to search for a movie"
             }
             return
         }
@@ -47,6 +48,7 @@ final class MoviesListViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.movies = decodedResponse.Search
                     self.isLoading = false
+                    self.errorMessage = ""
                 }
             } catch {
                 print(error)

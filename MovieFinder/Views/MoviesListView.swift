@@ -17,7 +17,12 @@ struct MoviesListView: View {
                         await viewModel.loadMovies(s: newSearchText)
                     }
                 }
-                if !viewModel.isLoading {
+                if viewModel.isLoading == true {
+                    ProgressView()
+                } else if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage).font(.system(size: 14))
+                        .foregroundColor(.gray)
+                } else {
                     List(viewModel.movies, id: \.imdbID) { movie in
                         HStack {
                             AsyncImage(url: URL(string: movie.Poster)
@@ -28,10 +33,6 @@ struct MoviesListView: View {
                         }
                     }.frame( maxWidth: .infinity)
                         .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
-                } else if viewModel.isLoading {
-                    ProgressView()
-                } else if !viewModel.errorMessage.isEmpty {
-                    Text(viewModel.errorMessage)
                 }
             }
         }
