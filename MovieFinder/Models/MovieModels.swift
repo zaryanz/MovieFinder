@@ -20,4 +20,5 @@ struct Movie: Codable {
     var Plot: String?
     var Director: String?
     var Genre: String?
+    var imdbRating: String?
 }
