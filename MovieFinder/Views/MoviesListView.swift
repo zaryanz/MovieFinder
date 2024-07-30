@@ -26,9 +26,12 @@ struct MoviesListView: View {
                             }.frame(width: 100, height: 150)
                             Text(movie.Title)
                         }
-                    }
-                } else {
+                    }.frame( maxWidth: .infinity)
+                        .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
+                } else if viewModel.isLoading {
                     ProgressView()
+                } else if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
                 }
             }
         }
