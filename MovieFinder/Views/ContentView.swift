@@ -9,7 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-       MoviesListView()
+        TabView {
+            MoviesListView().tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+            MovieDetailView(imdbID: "tt2005374").tabItem {
+                Label("Watchlist", systemImage: "bookmark.fill")
+            }
+        }
     }
 }
 

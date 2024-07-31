@@ -24,20 +24,25 @@ struct MovieDetailView: View {
                     }.frame(width: 200, height: 300)
                     Text(viewModel.movie!.Title).font(.title)
                     Text(viewModel.movie!.Year)
+                    HStack(spacing: 10) {
+                        VStack {
+                            Image(systemName: "star.fill").foregroundColor(.yellow)
+                            Text((viewModel.movie?.imdbRating ?? "N/A") + "/10")
+                        }.padding(4)
+                        Image(systemName: "bookmark").font(.system(size: 24)).padding(4)
+                    }
                     VStack {
-                        Image(systemName: "star.fill").foregroundColor(.yellow)
-                        Text((viewModel.movie?.imdbRating ?? "N/A") + "/10")
-                    }.padding(4)
-                    Text("DIRECTOR: " + (viewModel.movie?.Director ?? "N/A")).padding(2)
-                    Text("GENRE: " + (viewModel.movie?.Genre ?? "N/A")).padding(2)
-                    Text(viewModel.movie!.Plot ?? "No Plot available for this movie").padding(10)
+                        Text("DIRECTOR: " + (viewModel.movie?.Director ?? "N/A")).padding(2)
+                        Text("GENRE: " + (viewModel.movie?.Genre ?? "N/A")).padding(2)
+                        Text(viewModel.movie!.Plot ?? "No Plot available for this movie").padding(10)
+                    }.padding(.top, 6)
                 }
                 Spacer()
             }
         }.navigationTitle(viewModel.isLoading ? "" :viewModel.movie!.Title +  " (" + viewModel.movie!.Year + ")" )
             .navigationBarTitleDisplayMode(.inline).task {
-            await viewModel.loadMovie(imdbID: imdbID)
-        }
+                await viewModel.loadMovie(imdbID: imdbID)
+            }
     }
 }
 
