@@ -12,22 +12,24 @@ struct MoviesListView: View {
         
         var body: some View {
             NavigationStack {
-                Text("").searchable(text: $viewModel.searchText).onChange(of: viewModel.debouncedSearchText) { newSearchText in
-                    Task {
-                        await viewModel.loadMovies(s: newSearchText)
+                VStack {
+                    Text("").searchable(text: $viewModel.searchText).onChange(of: viewModel.debouncedSearchText) { newSearchText in
+                        Task {
+                            await viewModel.loadMovies(s: newSearchText)
+                        }
                     }
-                }
-                if viewModel.isLoading == true {
-                    ProgressView()
-                } else if !viewModel.errorMessage.isEmpty {
-                    Text(viewModel.errorMessage).font(.system(size: 14))
-                        .foregroundColor(.gray)
-                } else {
-                    List(viewModel.movies, id: \.imdbID) { movie in
-                        MovieListItemView(movie: movie)
-                    }.frame( maxWidth: .infinity)
-                        .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
-                }
+                    if viewModel.isLoading == true {
+                        ProgressView()
+                    } else if !viewModel.errorMessage.isEmpty {
+                        Text(viewModel.errorMessage).font(.system(size: 14))
+                            .foregroundColor(.gray)
+                    } else {
+                        List(viewModel.movies, id: \.imdbID) { movie in
+                            MovieListItemView(movie: movie)
+                        }.frame( maxWidth: .infinity)
+                            .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
+                    }
+                }.navigationTitle("MovieFinder")
             }
         }
 }

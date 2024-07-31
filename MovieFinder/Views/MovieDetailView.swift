@@ -26,11 +26,11 @@ struct MovieDetailView: View {
                     Text(viewModel.movie!.Year)
                     VStack {
                         Image(systemName: "star.fill").foregroundColor(.yellow)
-                        Text((viewModel.movie?.imdbRating ?? "NA") + "/10")
-                    }.padding(.top, 10)
+                        Text((viewModel.movie?.imdbRating ?? "N/A") + "/10")
+                    }.padding(4)
+                    Text("DIRECTOR: " + (viewModel.movie?.Director ?? "N/A")).padding(2)
+                    Text("GENRE: " + (viewModel.movie?.Genre ?? "N/A")).padding(2)
                     Text(viewModel.movie!.Plot ?? "No Plot available for this movie").padding(10)
-//                    Text("Director: \(viewModel.movie!.Director)")
-//                    Text("Genre: \(viewModel.movie!.Genre)")
                 }
                 Spacer()
             }
