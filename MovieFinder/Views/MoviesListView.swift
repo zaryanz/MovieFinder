@@ -26,7 +26,7 @@ struct MoviesListView: View {
                     } else {
                         List(viewModel.movies, id: \.imdbID) { movie in
                             MovieListItemView(movie: movie)
-                        }.frame( maxWidth: .infinity)
+                        }.frame(maxWidth: .infinity)
                             .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
                     }
                 }.navigationTitle("MovieFinder")

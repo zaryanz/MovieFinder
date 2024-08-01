@@ -43,4 +43,14 @@ final class MovieDetailViewModel: ObservableObject {
             print("invalid")
         }
     }
+    
+    func addToWatchlist(movie: Movie) {
+        CoreDataManager.shared.addData(movie: movie)
+        print("Movie added to core data")
+    }
+    
+    func isMovieWatchlisted(imdbID: String) -> Bool {
+        let data = CoreDataManager.shared.getData()
+        return data.contains(where: {$0.imdbID == imdbID})
+    }
 }

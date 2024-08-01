@@ -13,7 +13,7 @@ struct ContentView: View {
             MoviesListView().tabItem {
                 Label("Home", systemImage: "house.fill")
             }
-            MovieDetailView(imdbID: "tt2005374").tabItem {
+            WatchlistView().tabItem {
                 Label("Watchlist", systemImage: "bookmark.fill")
             }
         }

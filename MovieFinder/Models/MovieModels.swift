@@ -21,4 +21,28 @@ struct Movie: Codable {
     var Director: String?
     var Genre: String?
     var imdbRating: String?
+    
+    internal init(Title: String, Year: String, imdbID: String, `Type`: String, Poster: String, Plot: String? = nil, Director: String? = nil, Genre: String? = nil, imdbRating: String? = nil) {
+        self.Title = Title
+        self.Year = Year
+        self.imdbID = imdbID
+        self.`Type` = `Type`
+        self.Poster = Poster
+        self.Plot = Plot
+        self.Director = Director
+        self.Genre = Genre
+        self.imdbRating = imdbRating
+    }
+    
+    init(_ movie: MovieData) {
+        self.Title = movie.title!
+        self.Year = movie.year!
+        self.imdbID = movie.imdbID!
+        self.`Type` = movie.type!
+        self.Poster = movie.poster!
+        self.Plot = movie.plot
+        self.Director = movie.director
+        self.Genre = movie.genre
+        self.imdbRating = movie.imdbRating
+    }
 }
