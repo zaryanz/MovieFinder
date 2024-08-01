@@ -29,7 +29,7 @@ struct MovieDetailView: View {
                             Image(systemName: "star.fill").foregroundColor(.yellow)
                             Text((viewModel.movie?.imdbRating ?? "N/A") + "/10")
                         }.padding(4)
-                        Image(systemName: viewModel.isMovieWatchlisted(imdbID: imdbID) ? "bookmark.fill" : "bookmark").font(.system(size: 24)).padding(4).foregroundColor(.blue).onTapGesture {
+                        Image(systemName: viewModel.isWatchlisted ? "bookmark.fill" : "bookmark").font(.system(size: 24)).padding(4).foregroundColor(.blue).onTapGesture {
                             viewModel.addToWatchlist(movie: viewModel.movie!)
                         }
                     }

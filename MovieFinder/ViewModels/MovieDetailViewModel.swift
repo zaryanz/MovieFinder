@@ -11,6 +11,7 @@ final class MovieDetailViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var errorMessage = ""
     @Published var movie: Movie?
+    @Published var isWatchlisted = false
     
     func loadMovie(imdbID: String) async {
         DispatchQueue.main.async {
@@ -30,6 +31,7 @@ final class MovieDetailViewModel: ObservableObject {
                 print(decodedResponse)
                 DispatchQueue.main.async {
                     self.movie = decodedResponse
+                    self.isWatchlisted = self.isMovieWatchlisted(imdbID: imdbID)
                     self.isLoading = false
                     self.errorMessage = ""
                 }
@@ -46,7 +48,7 @@ final class MovieDetailViewModel: ObservableObject {
     
     func addToWatchlist(movie: Movie) {
         CoreDataManager.shared.addData(movie: movie)
-        print("Movie added to core data")
+        self.isWatchlisted = true
     }
     
     func isMovieWatchlisted(imdbID: String) -> Bool {
