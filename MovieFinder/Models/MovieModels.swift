@@ -35,15 +35,18 @@ struct Movie: Codable {
         self.imdbRating = imdbRating
     }
     
-    init(_ movie: MovieData) {
-        self.Title = movie.title!
-        self.Year = movie.year!
-        self.imdbID = movie.imdbID!
-        self.`Type` = movie.type!
-        self.Poster = movie.poster!
-        self.Plot = movie.plot
-        self.Director = movie.director
-        self.Genre = movie.genre
-        self.imdbRating = movie.imdbRating
+    /// Create a Movie entity from MovieData
+    /// - Parameters:
+    ///     - movie: MovieData present in CoreData DB
+    init(_ movieData: MovieData) {
+        self.Title = movieData.title!
+        self.Year = movieData.year!
+        self.imdbID = movieData.imdbID!
+        self.`Type` = movieData.type!
+        self.Poster = movieData.poster!
+        self.Plot = movieData.plot
+        self.Director = movieData.director
+        self.Genre = movieData.genre
+        self.imdbRating = movieData.imdbRating
     }
 }

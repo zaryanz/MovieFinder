@@ -42,7 +42,7 @@ class CoreDataManager {
         }
     }
     
-    func getByImdbID(imdbID: String) -> MovieData? {
+    func getMovieInDBByImdbID(imdbID: String) -> MovieData? {
         let request = NSFetchRequest<MovieData>(entityName: "MovieData")
         
         // Create a predicate to filter the fetch request by the name attribute
@@ -74,7 +74,7 @@ class CoreDataManager {
     }
     
     func deleteData(movie: Movie) {
-        let data = getByImdbID(imdbID: movie.imdbID)
+        let data = getMovieInDBByImdbID(imdbID: movie.imdbID)
         if data != nil {
             viewContext.delete(data!)
             saveData()
