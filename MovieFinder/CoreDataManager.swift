@@ -42,6 +42,23 @@ class CoreDataManager {
         }
     }
     
+    func getByImdbID(imdbID: String) -> MovieData? {
+        let request = NSFetchRequest<MovieData>(entityName: "MovieData")
+        
+        // Create a predicate to filter the fetch request by the name attribute
+        let predicate = NSPredicate(format: "imdbID == %@", imdbID)
+        request.predicate = predicate
+        
+        do {
+            let data = try container.viewContext.fetch(request)
+            print(data)
+            return (data.first != nil ? data.first! : nil)
+        } catch {
+            print("Error getting data: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
     func addData(movie: Movie) {
         let movieData = MovieData(context: container.viewContext)
         movieData.title = movie.Title
@@ -54,6 +71,14 @@ class CoreDataManager {
         movieData.genre = movie.Genre
         movieData.director = movie.Director
         saveData()
+    }
+    
+    func deleteData(movie: Movie) {
+        let data = getByImdbID(imdbID: movie.imdbID)
+        if data != nil {
+            viewContext.delete(data!)
+            saveData()
+        }
     }
     
     func saveData() {

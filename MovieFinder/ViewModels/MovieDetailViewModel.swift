@@ -51,6 +51,11 @@ final class MovieDetailViewModel: ObservableObject {
         self.isWatchlisted = true
     }
     
+    func removeFromWatchlist(movie: Movie) {
+        CoreDataManager.shared.deleteData(movie: movie)
+        self.isWatchlisted = false
+    }
+    
     func isMovieWatchlisted(imdbID: String) -> Bool {
         let data = CoreDataManager.shared.getData()
         return data.contains(where: {$0.imdbID == imdbID})

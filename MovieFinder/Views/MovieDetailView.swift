@@ -30,7 +30,7 @@ struct MovieDetailView: View {
                             Text((viewModel.movie?.imdbRating ?? "N/A") + "/10")
                         }.padding(4)
                         Image(systemName: viewModel.isWatchlisted ? "bookmark.fill" : "bookmark").font(.system(size: 24)).padding(4).foregroundColor(.blue).onTapGesture {
-                            viewModel.addToWatchlist(movie: viewModel.movie!)
+                            !viewModel.isWatchlisted ? viewModel.addToWatchlist(movie: viewModel.movie!) : viewModel.removeFromWatchlist(movie: viewModel.movie!)
                         }
                     }
                     VStack {
