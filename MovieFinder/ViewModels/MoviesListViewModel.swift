@@ -37,7 +37,9 @@ final class MoviesListViewModel: ObservableObject {
             self.isLoading = true
         }
         guard let url = URL(string: "http://www.omdbapi.com/?s=\(s)&apikey=\(apiKey)") else {
-            errorMessage = "Error connecting to the API"
+            DispatchQueue.main.async {
+                self.errorMessage = "Error connecting to the API"
+            }
             return
         }
         do {

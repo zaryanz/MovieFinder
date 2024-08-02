@@ -29,8 +29,8 @@ class CoreDataManager {
         }
     }
     
-    func getData() -> [Movie] {
-        let request = NSFetchRequest<MovieData>(entityName: "MovieData") //exact name as in the CoreData file
+    func getMoviesInDB() -> [Movie] {
+        let request = NSFetchRequest<MovieData>(entityName: "MovieData")
         
         do {
             try savedData = container.viewContext.fetch(request)
@@ -42,10 +42,9 @@ class CoreDataManager {
         }
     }
     
-    func getMovieInDBByImdbID(imdbID: String) -> MovieData? {
+    private func getMovieInDBByImdbID(imdbID: String) -> MovieData? {
         let request = NSFetchRequest<MovieData>(entityName: "MovieData")
         
-        // Create a predicate to filter the fetch request by the name attribute
         let predicate = NSPredicate(format: "imdbID == %@", imdbID)
         request.predicate = predicate
         
@@ -59,7 +58,7 @@ class CoreDataManager {
         }
     }
     
-    func addData(movie: Movie) {
+    func addMovieToDB(movie: Movie) {
         let movieData = MovieData(context: container.viewContext)
         movieData.title = movie.Title
         movieData.type = movie.`Type`
@@ -70,21 +69,21 @@ class CoreDataManager {
         movieData.imdbRating = movie.imdbRating
         movieData.genre = movie.Genre
         movieData.director = movie.Director
-        saveData()
+        saveDataInDB()
     }
     
-    func deleteData(movie: Movie) {
+    func deleteMovieFromDB(movie: Movie) {
         let data = getMovieInDBByImdbID(imdbID: movie.imdbID)
         if data != nil {
             viewContext.delete(data!)
-            saveData()
+            saveDataInDB()
         }
     }
     
-    func saveData() {
+    func saveDataInDB() {
         do {
             try container.viewContext.save()
-            getData() //to update the published variable to reflect this change
+            getMoviesInDB()
         } catch let error {
             print("Error: \(error)")
         }

@@ -13,7 +13,7 @@ final class WatchlistViewModel: ObservableObject {
     @Published var moviesInWatchlist = [Movie]()
     
     func getMoviesInWatchlist() {
-        let data = CoreDataManager.shared.getData()
+        let data = CoreDataManager.shared.getMoviesInDB()
         moviesInWatchlist = data
     }
 }
