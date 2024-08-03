@@ -37,8 +37,8 @@ struct Movie: Codable {
     
     /// Create a Movie entity from MovieData
     /// - Parameters:
-    ///     - movie: MovieData present in CoreData DB
-    init(_ movieData: MovieData) {
+    ///     - movie: MovieInDB present in CoreData DB
+    init(_ movieData: MovieInDB) {
         self.Title = movieData.title!
         self.Year = movieData.year!
         self.imdbID = movieData.imdbID!

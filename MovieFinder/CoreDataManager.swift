@@ -16,7 +16,7 @@ class CoreDataManager {
         return container.viewContext
     }
     
-    @Published var savedData: [MovieData] = []
+    @Published var savedData: [MovieInDB] = []
     
     private init() {
         container = NSPersistentContainer(name: "Watchlist")
@@ -30,7 +30,7 @@ class CoreDataManager {
     }
     
     func getMoviesInDB() -> [Movie] {
-        let request = NSFetchRequest<MovieData>(entityName: "MovieData")
+        let request = NSFetchRequest<MovieInDB>(entityName: "MovieInDB")
         
         do {
             try savedData = container.viewContext.fetch(request)
@@ -42,8 +42,8 @@ class CoreDataManager {
         }
     }
     
-    private func getMovieInDBByImdbID(imdbID: String) -> MovieData? {
-        let request = NSFetchRequest<MovieData>(entityName: "MovieData")
+    private func getMovieInDBByImdbID(imdbID: String) -> MovieInDB? {
+        let request = NSFetchRequest<MovieInDB>(entityName: "MovieInDB")
         
         let predicate = NSPredicate(format: "imdbID == %@", imdbID)
         request.predicate = predicate
@@ -59,7 +59,7 @@ class CoreDataManager {
     }
     
     func addMovieToDB(movie: Movie) {
-        let movieData = MovieData(context: container.viewContext)
+        let movieData = MovieInDB(context: container.viewContext)
         movieData.title = movie.Title
         movieData.type = movie.`Type`
         movieData.year = movie.Year
