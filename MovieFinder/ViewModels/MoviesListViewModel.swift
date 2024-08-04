@@ -36,7 +36,9 @@ final class MoviesListViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = true
         }
-        guard let url = URL(string: "http://www.omdbapi.com/?s=\(s)&apikey=\(apiKey)") else {
+        // processing the string to meet api input requirements
+        let searchQuery = s.replacingOccurrences(of: " ", with: "+")
+        guard let url = URL(string: "http://www.omdbapi.com/?s=\(searchQuery)&apikey=\(apiKey)") else {
             DispatchQueue.main.async {
                 self.errorMessage = "Error connecting to the API"
             }
@@ -46,7 +48,6 @@ final class MoviesListViewModel: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             do {
                 let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-                print(decodedResponse)
                 DispatchQueue.main.async {
                     self.movies = decodedResponse.Search
                     self.isLoading = false

@@ -29,7 +29,7 @@ struct MoviesListView: View {
                         }.frame(maxWidth: .infinity)
                             .edgesIgnoringSafeArea(.all).listStyle(PlainListStyle())
                     }
-                }.navigationTitle("MovieFinder")
+                }.navigationTitle("Search Movies")
             }
         }
 }
