@@ -47,15 +47,22 @@ final class MoviesListViewModel: ObservableObject {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             do {
-                let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-                DispatchQueue.main.async {
-                    self.movies = decodedResponse.Search
-                    self.isLoading = false
-                    self.errorMessage = ""
+                if let decodedResponse = try? JSONDecoder().decode(MovieResponse.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.movies = decodedResponse.Search
+                        self.isLoading = false
+                        self.errorMessage = ""
+                    }
+                } else {
+                    let errorResponse = try JSONDecoder().decode(MovieNotFoundResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.errorMessage = "No results found"
+                    }
                 }
             } catch {
-                print(error)
                 DispatchQueue.main.async {
+                    self.isLoading = false
                     self.errorMessage = "Error connecting to the API"
                 }
             }

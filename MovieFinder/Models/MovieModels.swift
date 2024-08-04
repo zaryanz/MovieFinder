@@ -11,6 +11,11 @@ struct MovieResponse: Codable {
     var Search: [Movie]
 }
 
+struct MovieNotFoundResponse: Codable {
+    var Response: String
+    var Error: String
+}
+
 struct Movie: Codable {
     var Title: String
     var Year: String
