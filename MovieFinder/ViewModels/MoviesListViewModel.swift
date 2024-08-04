@@ -54,7 +54,7 @@ final class MoviesListViewModel: ObservableObject {
                         self.errorMessage = ""
                     }
                 } else {
-                    let errorResponse = try JSONDecoder().decode(MovieNotFoundResponse.self, from: data)
+                    let _ = try JSONDecoder().decode(MovieNotFoundResponse.self, from: data)
                     DispatchQueue.main.async {
                         self.isLoading = false
                         self.errorMessage = "No results found"
