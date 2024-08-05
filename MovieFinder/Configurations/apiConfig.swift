@@ -9,3 +9,4 @@ import Foundation
 
 let env = ProcessInfo.processInfo.environment
 let apiKey = env["API_KEY"] ?? ""
+let baseUrl = "http://www.omdbapi.com/"

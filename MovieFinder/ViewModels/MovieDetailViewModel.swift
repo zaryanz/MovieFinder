@@ -19,7 +19,7 @@ final class MovieDetailViewModel: ObservableObject {
             self.errorMessage = ""
         }
         
-        guard let url = URL(string: "http://www.omdbapi.com/?i=\(imdbID)&apikey=\(apiKey)") else {
+        guard let url = URL(string: "\(baseUrl)?i=\(imdbID)&apikey=\(apiKey)") else {
             errorMessage = "Error connecting to the API"
             return
         }

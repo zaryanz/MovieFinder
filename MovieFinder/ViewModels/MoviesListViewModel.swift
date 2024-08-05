@@ -38,7 +38,7 @@ final class MoviesListViewModel: ObservableObject {
         }
         // processing the string to meet api input requirements
         let searchQuery = s.replacingOccurrences(of: " ", with: "+")
-        guard let url = URL(string: "http://www.omdbapi.com/?s=\(searchQuery)&apikey=\(apiKey)") else {
+        guard let url = URL(string: "\(baseUrl)?s=\(searchQuery)&apikey=\(apiKey)") else {
             DispatchQueue.main.async {
                 self.errorMessage = "Error connecting to the API"
             }
