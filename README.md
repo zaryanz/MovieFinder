@@ -3,13 +3,13 @@
   <br />
   MovieFinder
   <br />
-  <p align="center">
-    <img src="https://img.shields.io/badge/Language-Swift-blue.svg">
-    <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
-  </p>
 </h1>
 <p align="center">Find your favorite movies, series and look at the imDB ratings. Save movies you want to watch later in the offline Watchlist!</p>
-<br />
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Swift-blue.svg">
+  &nbsp;&nbsp;
+  <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
+</p>
 
 ## Functionality
 - **Search Screen (Home Tab)**: Displays a list of movies and series based on search queries typed in by the user using the OMDB API. On clicking any of the movies/series in the list, the user is taken to the Movie/Series Details screen.
