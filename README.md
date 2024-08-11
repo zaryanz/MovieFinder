@@ -8,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Swift-blue.svg">
   &nbsp;
-  <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
 </p>
 
 ## Functionality
