@@ -7,7 +7,7 @@
 <p align="center">Find your favorite movies, series and look at the imDB ratings. Save movies you want to watch later in the offline Watchlist!</p>
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Swift-blue.svg">
-  &nbsp;&nbsp;
+  &nbsp;
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
 </p>
 
