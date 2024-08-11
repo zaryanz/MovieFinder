@@ -1,5 +1,15 @@
-# MovieFinder
-Find your favorite movies, series and look at the imDB ratings. Save movies you want to watch later in the offline Watchlist!
+<h1 align="center">
+<img width="128" height="128" src="https://github.com/user-attachments/assets/3f453e66-2cff-48ea-ba17-7c0bc130c5eb" alt="MovieFinder App Icon" />
+  <br />
+  MovieFinder
+  <br />
+  <p align="center">
+    <img src="https://img.shields.io/badge/Language-Swift-blue.svg">
+    <a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"></a>
+  </p>
+</h1>
+<p align="center">Find your favorite movies, series and look at the imDB ratings. Save movies you want to watch later in the offline Watchlist!</p>
+<br />
 
 ## Functionality
 - **Search Screen (Home Tab)**: Displays a list of movies and series based on search queries typed in by the user using the OMDB API. On clicking any of the movies/series in the list, the user is taken to the Movie/Series Details screen.
